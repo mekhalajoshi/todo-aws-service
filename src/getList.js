@@ -10,7 +10,7 @@ exports.getList = async () => {
 
   // Get all(Scan) items
   const params = {
-    TableName: "Users",
+    TableName: "Todos",
   };
 
   try {
@@ -28,9 +28,11 @@ exports.getList = async () => {
 
   const result = {
     statusCode: statusCode,
+    headers: {
+      "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+    },
     body: JSON.stringify(responseBody)
   };
 
   return result;
 };
-

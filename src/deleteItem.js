@@ -11,9 +11,9 @@ exports.deleteItem = async (payload) => {
   console.log(payload);
   // Get all(Scan) items
   const params = {
-    TableName: "Users",
+    TableName: "Todos",
     Key: {
-      id: payload.id
+      todoId: payload.todoId
     }
   };
   try {
@@ -22,11 +22,14 @@ exports.deleteItem = async (payload) => {
     statusCode = "201";
   } catch (err) {
     console.log(err);
-    responseBody = `Unable to delete user data`;
-    statusCode = "403";
+    responseBody = err.message;
+    statusCode = err.statusCode;
   }
   const result = {
     statusCode: statusCode,
+    headers: {
+      "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+    },
     body: responseBody
   };
 

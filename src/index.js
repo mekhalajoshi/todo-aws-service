@@ -6,7 +6,7 @@ const deleteTodo = require('./deleteItem');
 
 exports.handler = async (event) => {
   console.log("**************** todo-aws-service ********************");
-
+  console.log(event);
   let response = {
     statusCode: 0,
     body: ""

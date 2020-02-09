@@ -21,6 +21,11 @@ paths:
       responses:
         200:
           description: successful operation
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+              description: "'*' - Allows CORs request."
           content:
             application/json:
               schema:
@@ -42,14 +47,18 @@ paths:
       requestBody:
         description: ID of todo item to return
         content:
-          '*/*':
+          application/json:
             schema:
               $ref: '#/components/schemas/Todo'
         required: true
       responses:
-        201:
+        200:
           description: successful operation
-          content: {}
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+              description: "'*' - Allows CORs request."
         500:
           description: Internal server error
           content: {}
@@ -70,6 +79,11 @@ paths:
       responses:
         200:
           description: successful operation
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+              description: "'*' - Allows CORs request."
           content:
             application/json:
               schema:
@@ -103,7 +117,12 @@ paths:
               $ref: '#/components/schemas/Todo'
         required: true
       responses:
-        204:
+        200:
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+              description: "'*' - Allows CORs request."
           description: successful operation
         400:
           description: Invalid ID supplied
@@ -124,7 +143,12 @@ paths:
         schema:
           type: string
       responses:
-        204:
+        200:
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+              description: "'*' - Allows CORs request."
           description: successful operation
         400:
           description: Invalid ID supplied
